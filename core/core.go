@@ -158,7 +158,7 @@ func Read(db data.Data) gin.HandlerFunc {
 	}
 }
 
-// Read returns a Gin middleware that deletes a mailbox entry by its ID.
+// Delete returns a Gin middleware that deletes a mailbox entry by its ID.
 func Delete(db data.Data) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		id := c.Param("id")

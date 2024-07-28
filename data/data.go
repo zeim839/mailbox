@@ -35,7 +35,7 @@ type Data interface {
 
 // Form defines a single mailbox entry.
 type Form struct {
-	Id      string `json:"id" bson:"_id,omitempty"`
+	ID      string `json:"id" bson:"_id,omitempty"`
 	From    string `json:"from" bson:"from" binding:"required"`
 	Subject string `json:"subject" bson:"subject" binding:"required"`
 	Message string `json:"message" bson:"message" binding:"required"`
