@@ -7,8 +7,8 @@ type Config struct {
 	MongoURI      string `mapstructure:"MONGO_URI"`
 	GinMode       string `mapstructure:"GIN_MODE"`
 	Port          string `mapstructure:"PORT"`
-	User          string `mapstructure:"USER"`
-	Pwd           string `mapstructure:"PWD"`
+	Username      string `mapstructure:"USER"`
+	Password      string `mapstructure:"PASS"`
 	CaptchaSecret string `mapstructure:"CAPTCHA_SECRET"`
 }
 

@@ -57,14 +57,14 @@ func main() {
 		r.POST("/mailbox/submit", core.Create(mongo))
 	}
 
-	if config.User != "" && config.Pwd != "" {
+	if config.Username != "" && config.Password != "" {
 		log.Print("Basic auth successfully configured")
-		r.GET("/mailbox/entry/:id", core.BasicAuthMw(config.User,
-			config.Pwd), core.Read(mongo))
-		r.DELETE("/mailbox/entry/:id", core.BasicAuthMw(config.User,
-			config.Pwd), core.Delete(mongo))
-		r.GET("/mailbox/entries/", core.BasicAuthMw(config.User,
-			config.Pwd), core.ReadAll(mongo))
+		r.GET("/mailbox/entry/:id", core.BasicAuthMw(config.Username,
+			config.Password), core.Read(mongo))
+		r.DELETE("/mailbox/entry/:id", core.BasicAuthMw(config.Username,
+			config.Password), core.Delete(mongo))
+		r.GET("/mailbox/entries/", core.BasicAuthMw(config.Username,
+			config.Password), core.ReadAll(mongo))
 	} else {
 		log.Print("Basic auth not configured")
 		r.GET("/mailbox/entry/:id", core.Read(mongo))

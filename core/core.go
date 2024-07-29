@@ -3,6 +3,7 @@ package core
 import (
 	"context"
 	"encoding/base64"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/zeim839/mailbox/data"
 	"net/http"
@@ -22,25 +23,35 @@ func BasicAuthMw(username, password string) gin.HandlerFunc {
 		authHeader := c.GetHeader("Authorization")
 		if authHeader == "" {
 			c.Header("WWW-Authenticate", `Basic realm="Restricted"`)
-			c.AbortWithStatus(http.StatusUnauthorized)
+			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
+				"error": "Unauthorized: need username and password",
+			})
 			return
 		}
 
 		parts := strings.SplitN(authHeader, " ", 2)
 		if len(parts) != 2 || parts[0] != "Basic" {
-			c.AbortWithStatus(http.StatusUnauthorized)
+			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
+				"error": "Unauthorized: scheme must be Basic",
+			})
 			return
 		}
 
 		decoded, err := base64.StdEncoding.DecodeString(parts[1])
 		if err != nil {
-			c.AbortWithStatus(http.StatusUnauthorized)
+			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
+				"error": "Unauthorized: could not decode base64",
+			})
 			return
 		}
 
 		credentials := strings.SplitN(string(decoded), ":", 2)
+		fmt.Println("expecting", username, password)
+		fmt.Println(credentials)
 		if len(credentials) != 2 || credentials[0] != username || credentials[1] != password {
-			c.AbortWithStatus(http.StatusUnauthorized)
+			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
+				"error": "Unauthorized: wrong credentials",
+			})
 			return
 		}
 
