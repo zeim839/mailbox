@@ -7,8 +7,8 @@ type Config struct {
 	MongoURI      string `mapstructure:"MONGO_URI"`
 	GinMode       string `mapstructure:"GIN_MODE"`
 	Port          string `mapstructure:"PORT"`
-	Username      string `mapstructure:"USER"`
-	Password      string `mapstructure:"PASS"`
+	Username      string `mapstructure:"USERNAME"`
+	Password      string `mapstructure:"PASSWORD"`
 	CaptchaSecret string `mapstructure:"CAPTCHA_SECRET"`
 }
 
@@ -16,7 +16,7 @@ type Config struct {
 func LoadConfig(path string) (config Config, err error) {
 	viper.AddConfigPath(path)
 	viper.SetConfigType("env")
-	viper.SetConfigName("config")
+	viper.SetConfigName(".env")
 	viper.AutomaticEnv()
 	viper.SetDefault("PORT", "8080")
 	viper.SetDefault("GIN_MODE", "debug")
