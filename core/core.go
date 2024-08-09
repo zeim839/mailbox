@@ -3,7 +3,6 @@ package core
 import (
 	"context"
 	"encoding/base64"
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/zeim839/mailbox/data"
 	"net/http"
@@ -46,8 +45,6 @@ func BasicAuthMw(username, password string) gin.HandlerFunc {
 		}
 
 		credentials := strings.SplitN(string(decoded), ":", 2)
-		fmt.Println("expecting", username, password)
-		fmt.Println(credentials)
 		if len(credentials) != 2 || credentials[0] != username || credentials[1] != password {
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
 				"error": "Unauthorized: wrong credentials",
