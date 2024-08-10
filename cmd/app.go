@@ -37,8 +37,8 @@ type readAllResponse struct {
 
 func init() {
 	rootCmd.PersistentFlags().StringVar(&api, "api", "", "(Required) HTTP API endpoint")
-	rootCmd.PersistentFlags().StringVar(&usr, "usr", "", "(Optional) Your basic auth username")
-	rootCmd.PersistentFlags().StringVar(&pwd, "pwd", "", "(Optional) Your basic auth password")
+	rootCmd.PersistentFlags().StringVar(&usr, "username", "", "(Optional) Your basic auth username")
+	rootCmd.PersistentFlags().StringVar(&pwd, "password", "", "(Optional) Your basic auth password")
 }
 
 func validateAPI() {
