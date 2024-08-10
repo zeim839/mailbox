@@ -6,12 +6,12 @@
   <img src="https://i.imgur.com/zubHn5Y.png" width=700/>
 </p>
 
-Mailbox is a simple Go program for controlling website contact form submissions. It implements an API server backend for accepting form submissions and an intuitive, authenticated terminal UI for webmasters. 
+Mailbox is a simple Go program for controlling website contact form submissions. It implements an API server backend for accepting form submissions and an intuitive, authenticated terminal UI for webmasters.
 It currently works with MongoDB, but a modular database interface is provided for integrating with other backends. CloudFlare [Turnstile](https://www.cloudflare.com/en-gb/products/turnstile/) captchas are
 also supported. Mailbox was designed as a minimal, non-properietary system for serving dynamic forms on static websites (e.g. GitHub pages).
 
 ## Install
-> [!WARNING]  
+> [!WARNING]
 > Mailbox is work-in-progress. There are currently no stable releases.
 
 This project uses the [Go compiler](https://go.dev/). To get started, clone the GitHub repository:
@@ -52,16 +52,16 @@ The server is configured through a `config.env` file in the present working dire
  * `MONGO_URI`: the MongoDB connection URI.
  * `GIN_MODE`: The Gin server mode (one of `DEBUG`, `RELEASE`, or `TEST`)
  * `PORT`: server port.
- * `USER`: an optional username for implementing Basic http auth.
- * `PASS`: the password for basic http auth.
+ * `USERNAME`: an optional username for implementing Basic http auth.
+ * `PASSWORD`: the password for basic http auth.
  * `CAPTCHA_SECRET`: an optional secret API key for configuring Cloudflare Turnstile captcha.
 
 A minimal configuration is illustrated below:
 ```env
 # config.env
 MONGO_URI = "mongodb+srv:// ... "
-USER      = "admin"
-PASS      = "strong-password-123"
+USERNAME  = "admin"
+PASSWORD  = "strong-password-123"
 ```
 
 Currently, only MongoDB is supported. We are working on implementing additional database backends.
