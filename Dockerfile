@@ -11,7 +11,8 @@ RUN go mod download
 COPY config ./config/
 COPY core ./core/
 COPY data ./data/
-COPY server/*.go config.env ./
+COPY .env ./
+COPY server/*.go ./
 
 # Compile GoLang.
 RUN CGO_ENABLED=0 GOOS=linux go build -o /mailbox
