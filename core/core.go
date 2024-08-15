@@ -72,6 +72,7 @@ func Create(db data.Data) gin.HandlerFunc {
 			})
 			return
 		}
+		form.ID = "" // Remove the ID attribute.
 		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 		defer cancel()
 		if _, err := db.Create(ctx, form); err != nil {
@@ -101,9 +102,10 @@ func CreateWithCaptcha(db data.Data, secret string) gin.HandlerFunc {
 			})
 			return
 		}
-		if !validateCaptcha(secret, form.Captcha, form.RemoteIP) {
+		form.ID = "" // Remove the ID attribute.
+		if !validateCaptcha(secret, form.Captcha, c.ClientIP()) {
 			c.JSON(http.StatusBadRequest, gin.H{
-				"error": "bad captcha",
+				"error": "failed to validate captcha",
 			})
 			return
 		}
