@@ -45,8 +45,7 @@ type Form struct {
 // RemoteIP attribute. It is used to validate Turnstile captchas.
 type FormWithCaptcha struct {
 	Form
-	Captcha  string `json:"captcha" binding:"required"`
-	RemoteIP string `json:"remote_ip" binding:"required"`
+	Captcha string `json:"captcha" binding:"required"`
 }
 
 // Validate a form's 'From', 'Subject', and 'Message' fields.
