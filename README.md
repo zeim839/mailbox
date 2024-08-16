@@ -1,6 +1,6 @@
 <h1 align="center">mailbox</h1>
 <p align="center">
-  <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/zeim839/mailbox/go.yml?label=Go%20Build"> <img alt="GitHub License" src="https://img.shields.io/github/license/zeim839/mailbox"> <img alt="GitHub issues" src="https://img.shields.io/github/issues/zeim839/mailbox">
+  <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/zeim839/mailbox/go.yml?label=Go%20Build"> <img alt="GitHub License" src="https://img.shields.io/github/license/zeim839/mailbox"> <img alt="GitHub issues" src="https://img.shields.io/github/issues/zeim839/mailbox"> <a href="https://pkg.go.dev/github.com/zeim839/mailbox"><img src="https://pkg.go.dev/badge/github.com/zeim839/mailbox.svg" alt="Go Reference"></a>
 </p>
 <p align="center">
   <img src="https://i.imgur.com/zubHn5Y.png" width=700/>
